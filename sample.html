@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>string rect</title>
+</head>
+<script type="text/javascript" src="string_rect.js"></script>
+<body>
+<div id="string_rect">js-string-rect A Simple Demo.</div>
+<script type="text/javascript">
+
+(function(doc) {
+    var rects = doc.getElementById("string_rect").retrieveStringRects();
+    for(var key in rects) {
+        var rect = rects[key].rect;
+        var mark = document.createElement("div");
+        mark.style.backgroundColor = (key % 2 == 0) ? "#ff0000" : "#0000ff";
+        mark.style.opacity = "0.5";
+
+        mark.style.position = "absolute";
+        mark.style.left = rect.left + "px";
+        mark.style.top = rect.top + "px";
+        mark.style.width = rect.right - rect.left + "px";
+        mark.style.height = rect.bottom - rect.top + "px";
+
+        doc.body.appendChild(mark);
+    }
+})(document);    
+
+</script>    
+
+</body>
+</html>
